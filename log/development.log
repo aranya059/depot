@@ -43,3 +43,111 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 19ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 2025)
 
 
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:13:21 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/nascenia/.rvm/gems/ruby-2.7.2/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/nascenia/.rvm/gems/ruby-2.7.2/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.7ms | Allocations: 178)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 880)
+
+
+Started GET "/products" for 127.0.0.1 at 2021-01-06 22:13:27 +0600
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:6
+  Rendered products/index.html.erb within layouts/application (Duration: 46.7ms | Allocations: 10920)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/nascenia/Desktop/depot/public/packs
+[Webpacker] Hash: 76145d9ce4575ebaa29b
+Version: webpack 4.44.2
+Time: 1025ms
+Built at: 01/06/2021 10:13:29 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c229f7c7014cf8c8d494.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c229f7c7014cf8c8d494.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c229f7c7014cf8c8d494.js js/application-c229f7c7014cf8c8d494.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 2692ms (Views: 2686.0ms | ActiveRecord: 1.0ms | Allocations: 17156)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:19:53 +0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:5
+  Rendered store/index.html.erb within layouts/application (Duration: 112.2ms | Allocations: 19645)
+Completed 500 Internal Server Error in 160ms (ActiveRecord: 5.3ms | Allocations: 33993)
+
+
+  
+ActionView::Template::Error (The asset "application.js" is not present in the asset pipeline.
+):
+     8: 
+     9:     <%= stylesheet_link_tag    'application', media: 'all',
+    10:     'data-turbolinks-track': 'reload' %>
+    11:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    12:   </head>
+    13: 
+    14:   <body class="<%= controller.controller_name %>">
+  
+app/views/layouts/application.html.erb:11
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:20:24 +0600
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:5
+  Rendered store/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 2730)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 0.3ms | Allocations: 7667)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:20:47 +0600
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:5
+  Rendered store/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 2498)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.3ms | Allocations: 6370)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:22:32 +0600
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 59.9ms | Allocations: 7305)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 104ms (Views: 101.3ms | ActiveRecord: 0.3ms | Allocations: 19537)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:28:59 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 3035)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.6ms | Allocations: 7851)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:30:13 +0600
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 3037)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.5ms | Allocations: 7855)
+
+
