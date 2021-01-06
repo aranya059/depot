@@ -151,3 +151,53 @@ Processing by StoreController#index as HTML
 Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.5ms | Allocations: 7855)
 
 
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:34:21 +0600
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2787)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.2ms | Allocations: 6632)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCarts (20210106163547)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210106163547"]]
+  [1m[35m (80.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLineItems (20210106163953)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "line_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "cart_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_11e15d5c6b"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_af645e8e5f"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_line_items_on_product_id" ON "line_items" ("product_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_line_items_on_cart_id" ON "line_items" ("cart_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210106163953"]]
+  [1m[35m (80.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-01-06 22:54:16 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StoreController#index as HTML
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 6212)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 98ms (Views: 63.8ms | ActiveRecord: 0.3ms | Allocations: 26154)
+
+
