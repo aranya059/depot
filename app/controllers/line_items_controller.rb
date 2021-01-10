@@ -7,6 +7,7 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails5 for more book information.
 #---
 class LineItemsController < ApplicationController
+  skip_before_action :authorize, only: :create
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
@@ -42,11 +43,11 @@ class LineItemsController < ApplicationController
         format.html { redirect_to store_index_url }
         format.js   { @current_item = @line_item }
         format.json { render :show,
-          status: :created, location: @line_item }
+                             status: :created, location: @line_item }
       else
         format.html { render :new }
         format.json { render json: @line_item.errors,
-          status: :unprocessable_entity }
+                             status: :unprocessable_entity }
       end
     end
   end
@@ -76,15 +77,15 @@ class LineItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_line_item
-      @line_item = LineItem.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_line_item
+    @line_item = LineItem.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white
-    # list through.
-    def line_item_params
-      params.require(:line_item).permit(:product_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white
+  # list through.
+  def line_item_params
+    params.require(:line_item).permit(:product_id)
+  end
   #...
 end
