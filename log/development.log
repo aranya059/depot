@@ -8176,3 +8176,1083 @@ Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-10 18:13:39 +0600
 Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
 ProductsChannel is transmitting the subscription confirmation
 ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-10 18:15:43 +0600
+ProductsChannel stopped streaming from products
+Started GET "/carts" for 127.0.0.1 at 2021-01-11 11:41:16 +0600
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CartsController#index as HTML
+  [1m[36mUser Load (14.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 31ms (ActiveRecord: 14.6ms | Allocations: 2360)
+
+
+Started GET "/login" for 127.0.0.1 at 2021-01-11 11:41:16 +0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 21.9ms | Allocations: 1348)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 396ms (Views: 364.9ms | ActiveRecord: 0.0ms | Allocations: 14589)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:41:17 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:41:17 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:41:26 +0600
+ProductsChannel stopped streaming from products
+Started POST "/login" for 127.0.0.1 at 2021-01-11 11:41:27 +0600
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"T9RkRB1ucM4OONQoCZtIMvH0CFxJnzOPe11OjdIaRROXlWEkKKfVRrJVKI8Um8k5AGUvK2VUQBPBbPDzv3vTEg==", "name"=>"aranya", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "aranya"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 369ms (ActiveRecord: 1.4ms | Allocations: 3657)
+
+
+Started GET "/admin" for 127.0.0.1 at 2021-01-11 11:41:27 +0600
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+  [1m[35m (10.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders"[0m
+  ↳ app/controllers/admin_controller.rb:11:in `index'
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 125)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 90ms (Views: 28.2ms | ActiveRecord: 11.5ms | Allocations: 8442)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:41:27 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:41:27 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:41:31 +0600
+ProductsChannel stopped streaming from products
+Started GET "/" for 127.0.0.1 at 2021-01-11 11:41:31 +0600
+Processing by StoreController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  [1m[36mCart Create (8.7ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2021-01-11 05:41:31.917365"], ["updated_at", "2021-01-11 05:41:31.917365"]]
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  [1m[35m (115.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 235.1ms | Allocations: 7924)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (22.5ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 28.7ms | Allocations: 1579)
+Completed 200 OK in 619ms (Views: 405.3ms | ActiveRecord: 151.5ms | Allocations: 28097)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:41:32 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:41:32 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Started POST "/en/line_items?product_id=1" for 127.0.0.1 at 2021-01-11 11:43:04 +0600
+Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"DDdRfUT+4unBrXBzTsJLeuEchoENBlv3tvmZVvAlqZnUdlQdcTdHYX3AjNRTwspxEI2h9iHNKGsMyCconUQ/mA==", "product_id"=>"1", "locale"=>"en"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:38:in `create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 14], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[36mLineItem Create (0.6ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 14], ["created_at", "2021-01-11 05:43:04.569892"], ["updated_at", "2021-01-11 05:43:04.569892"]]
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[35m (140.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  Rendering line_items/create.js.erb
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 26.3ms | Allocations: 1894)
+  Rendered carts/_cart.html.erb (Duration: 32.6ms | Allocations: 3388)
+  Rendered line_items/create.js.erb (Duration: 37.5ms | Allocations: 3793)
+Completed 200 OK in 247ms (Views: 41.4ms | ActiveRecord: 142.9ms | Allocations: 16464)
+
+
+Started POST "/en/line_items?product_id=1" for 127.0.0.1 at 2021-01-11 11:43:05 +0600
+Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"DDdRfUT+4unBrXBzTsJLeuEchoENBlv3tvmZVvAlqZnUdlQdcTdHYX3AjNRTwspxEI2h9iHNKGsMyCconUQ/mA==", "product_id"=>"1", "locale"=>"en"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:38:in `create'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 14], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[36mLineItem Update (0.5ms)[0m  [1m[33mUPDATE "line_items" SET "quantity" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["quantity", 2], ["updated_at", "2021-01-11 05:43:05.708831"], ["id", 3]]
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[35m (66.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  Rendering line_items/create.js.erb
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.1ms | Allocations: 886)
+  Rendered carts/_cart.html.erb (Duration: 9.0ms | Allocations: 2097)
+  Rendered line_items/create.js.erb (Duration: 10.0ms | Allocations: 2254)
+Completed 200 OK in 102ms (Views: 13.2ms | ActiveRecord: 68.2ms | Allocations: 9115)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:06 +0600
+ProductsChannel stopped streaming from products
+Started GET "/" for 127.0.0.1 at 2021-01-11 11:43:06 +0600
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 15.0ms | Allocations: 3391)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.3ms | Allocations: 884)
+  Rendered carts/_cart.html.erb (Duration: 7.4ms | Allocations: 2205)
+Completed 200 OK in 42ms (Views: 36.4ms | ActiveRecord: 1.3ms | Allocations: 11665)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:43:06 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:06 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:12 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es" for 127.0.0.1 at 2021-01-11 11:43:12 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 3435)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.7ms | Allocations: 915)
+  Rendered carts/_cart.html.erb (Duration: 8.7ms | Allocations: 2263)
+Completed 200 OK in 52ms (Views: 37.2ms | ActiveRecord: 1.6ms | Allocations: 12426)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:43:12 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:12 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:14 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es/orders/new" for 127.0.0.1 at 2021-01-11 11:43:14 +0600
+Processing by OrdersController#new as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:97:in `ensure_cart_isnt_empty'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 121.1ms | Allocations: 1717)
+  Rendered orders/new.html.erb within layouts/application (Duration: 122.8ms | Allocations: 2065)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE LineItem Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.7ms | Allocations: 896)
+  Rendered carts/_cart.html.erb (Duration: 8.9ms | Allocations: 2114)
+Completed 200 OK in 170ms (Views: 147.9ms | ActiveRecord: 2.1ms | Allocations: 15028)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:43:14 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:14 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:40 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:43:41 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"sLCzQXe+z9YSiW6roRrUvfqn9hsEqcxRe0w7L3kTsnVo8bYhQndqXq7kkgy8GlW2CzbRbChiv83BfYVRFHIkdA==", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>""}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 3.0ms | Allocations: 1345)
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1431)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 2.0ms | Allocations: 898)
+  Rendered carts/_cart.html.erb (Duration: 3.2ms | Allocations: 1394)
+Completed 200 OK in 30ms (Views: 16.6ms | ActiveRecord: 0.5ms | Allocations: 11482)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:43:41 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:43:41 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:22 +0600
+ProductsChannel stopped streaming from products
+Started GET "/orders" for 127.0.0.1 at 2021-01-11 11:44:22 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:17
+  Rendered orders/index.html.erb within layouts/application (Duration: 19.0ms | Allocations: 1089)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 29.5ms | ActiveRecord: 0.8ms | Allocations: 6802)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:44:22 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:22 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:26 +0600
+ProductsChannel stopped streaming from products
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:44:26 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:26 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:28 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:44:28 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"sLCzQXe+z9YSiW6roRrUvfqn9hsEqcxRe0w7L3kTsnVo8bYhQndqXq7kkgy8GlW2CzbRbChiv83BfYVRFHIkdA==", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>""}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 2.8ms | Allocations: 1291)
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1487)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 2.1ms | Allocations: 886)
+  Rendered carts/_cart.html.erb (Duration: 3.3ms | Allocations: 1371)
+Completed 200 OK in 31ms (Views: 17.2ms | ActiveRecord: 0.7ms | Allocations: 10960)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:44:28 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:44:28 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:39 +0600
+ProductsChannel stopped streaming from products
+Started GET "/orders" for 127.0.0.1 at 2021-01-11 11:45:39 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:17
+  Rendered orders/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1049)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 17.1ms | ActiveRecord: 0.5ms | Allocations: 7592)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:45:39 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:39 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:43 +0600
+ProductsChannel stopped streaming from products
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:45:43 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:43 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:45 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:45:45 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"sLCzQXe+z9YSiW6roRrUvfqn9hsEqcxRe0w7L3kTsnVo8bYhQndqXq7kkgy8GlW2CzbRbChiv83BfYVRFHIkdA==", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>""}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 9.0ms | Allocations: 2343)
+  Rendered orders/new.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2676)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 4.0ms | Allocations: 1056)
+  Rendered carts/_cart.html.erb (Duration: 6.8ms | Allocations: 1866)
+Completed 200 OK in 42ms (Views: 29.0ms | ActiveRecord: 0.7ms | Allocations: 12442)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:45:45 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:45:45 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:52 +0600
+ProductsChannel stopped streaming from products
+Started GET "/orders" for 127.0.0.1 at 2021-01-11 11:46:52 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:17
+  Rendered orders/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 4478)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 39.1ms | ActiveRecord: 2.3ms | Allocations: 16830)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:46:52 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:52 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:53 +0600
+ProductsChannel stopped streaming from products
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:46:53 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:53 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:55 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:46:55 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"sLCzQXe+z9YSiW6roRrUvfqn9hsEqcxRe0w7L3kTsnVo8bYhQndqXq7kkgy8GlW2CzbRbChiv83BfYVRFHIkdA==", "order"=>{"name"=>"", "address"=>"", "email"=>"", "pay_type"=>""}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 4.5ms | Allocations: 1898)
+  Rendered orders/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2094)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 19.0ms | Allocations: 6325)
+  Rendered carts/_cart.html.erb (Duration: 22.2ms | Allocations: 6992)
+Completed 200 OK in 74ms (Views: 37.2ms | ActiveRecord: 4.4ms | Allocations: 25787)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:46:55 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:46:55 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:47:48 +0600
+ProductsChannel stopped streaming from products
+Started GET "/orders" for 127.0.0.1 at 2021-01-11 11:47:48 +0600
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize'
+  Rendering orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/views/orders/index.html.erb:17
+  Rendered orders/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 795)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 0.7ms | Allocations: 6106)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:47:48 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:47:48 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:47:49 +0600
+ProductsChannel stopped streaming from products
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:47:49 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:47:49 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:49:28 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es/orders/new" for 127.0.0.1 at 2021-01-11 11:49:28 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by OrdersController#new as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:97:in `ensure_cart_isnt_empty'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 2.0ms | Allocations: 801)
+  Rendered orders/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 888)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE LineItem Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 18.0ms | Allocations: 6223)
+  Rendered carts/_cart.html.erb (Duration: 32.7ms | Allocations: 11586)
+Completed 200 OK in 80ms (Views: 45.5ms | ActiveRecord: 4.2ms | Allocations: 28187)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:49:29 +0600
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:49:29 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:49:54 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:49:54 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"KjZddNJXreB7gbAdZYq3kI2mbH10Pf01WZ/oGXRgudnyd1gU554IaMfsTLp4ijabfDdLClj2jqnjrlZnGQEv2A==", "order"=>{"name"=>"Dos Santos", "address"=>"Spain", "email"=>"santos@gmail.com", "pay_type"=>"Credit card"}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mOrder Create (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("name", "address", "email", "pay_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Dos Santos"], ["address", "Spain"], ["email", "santos@gmail.com"], ["pay_type", 1], ["created_at", "2021-01-11 05:49:54.081456"], ["updated_at", "2021-01-11 05:49:54.081456"]]
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mLineItem Update (0.5ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "order_id" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["order_id", 3], ["updated_at", "2021-01-11 05:49:54.089300"], ["id", 3]]
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[35m (147.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 14]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[36mCart Destroy (0.5ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[35m (85.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 2b097b65-cc5a-4729-99de-dc806b58864c) to Async(mailers) with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f4f24bc54b0 @uri=#<URI::GID gid://depot/Order/3>>]}
+Redirected to http://localhost:3000/en
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 302 Found in 661ms (ActiveRecord: 236.4ms | Allocations: 27922)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c] Performing ActionMailer::MailDeliveryJob (Job ID: 2b097b65-cc5a-4729-99de-dc806b58864c) from Async(mailers) enqueued at 2021-01-11T05:49:54Z with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f4f24b696b0 @uri=#<URI::GID gid://depot/Order/3>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   Rendering order_mailer/received.html.erb within layouts/mailer
+Started GET "/en" for 127.0.0.1 at 2021-01-11 11:49:54 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2021-01-11 05:49:54.745340"], ["updated_at", "2021-01-11 05:49:54.745340"]]
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  [1m[35m (85.4ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   Rendered order_mailer/received.html.erb within layouts/mailer (Duration: 103.2ms | Allocations: 4933)
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  Rendering store/index.html.erb within layouts/application
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   Rendering order_mailer/received.text.erb within layouts/mailer
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."order_id" = ?[0m  [["order_id", 3]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   ↳ app/views/order_mailer/received.text.erb:7
+  Rendered store/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 5118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 15], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 2.7ms | Allocations: 1148)
+Completed 200 OK in 139ms (Views: 37.3ms | ActiveRecord: 86.6ms | Allocations: 17948)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   Rendered collection of line_items/_line_item.text.erb [1 times] (Duration: 23.9ms | Allocations: 7228)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c]   Rendered order_mailer/received.text.erb within layouts/mailer (Duration: 43.9ms | Allocations: 12841)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c] OrderMailer#received: processed outbound mail in 189.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c] Delivered mail 5ffbe702e73f1_1855cbd427681@nascenia-HP-ProBook-4540s.mail (65.9ms)
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:49:54 +0600
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c] Date: Mon, 11 Jan 2021 11:49:54 +0600
+From: Sam Ruby <depot@example.com>
+To: santos@gmail.com
+Message-ID: <5ffbe702e73f1_1855cbd427681@nascenia-HP-ProBook-4540s.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5ffbe702dfe65_1855cbd42758a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ffbe702dfe65_1855cbd42758a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Dos Santos
+
+Thank you for your recent order from The Pragmatic Store.
+
+You ordered the following items:
+
+ 2 x Rails, Angular, Postgres, and Bootstrap
+
+We'll send you a separate e-mail when your order ships.
+
+----==_mimepart_5ffbe702dfe65_1855cbd42758a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Order#received</h1>
+
+<p>
+  , find me in app/views/order_mailer/received.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5ffbe702dfe65_1855cbd42758a--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2b097b65-cc5a-4729-99de-dc806b58864c] Performed ActionMailer::MailDeliveryJob (Job ID: 2b097b65-cc5a-4729-99de-dc806b58864c) from Async(mailers) in 258.76ms
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:49:54 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:01 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es" for 127.0.0.1 at 2021-01-11 11:50:01 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 21.7ms | Allocations: 3423)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 15], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 4.1ms | Allocations: 1179)
+Completed 200 OK in 45ms (Views: 41.1ms | ActiveRecord: 1.1ms | Allocations: 11076)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:50:01 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:01 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Started POST "/es/line_items?product_id=1" for 127.0.0.1 at 2021-01-11 11:50:05 +0600
+Processing by LineItemsController#create as JS
+  Parameters: {"authenticity_token"=>"sXWxfZBkaoDBtb0SBnh45sES+R6fzilK1Jf60xkDB8ppNLQdpa3PCH3YQbUbePntMIPeabMFWtZupkStdGKRyw==", "product_id"=>"1", "locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/line_items_controller.rb:38:in `create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = ? LIMIT ?[0m  [["cart_id", 15], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cart.rb:5:in `add_product'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[36mLineItem Create (0.4ms)[0m  [1m[32mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["cart_id", 15], ["created_at", "2021-01-11 05:50:05.225707"], ["updated_at", "2021-01-11 05:50:05.225707"]]
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  [1m[35m (140.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/line_items_controller.rb:42:in `block in create'
+  Rendering line_items/create.js.erb
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 2.6ms | Allocations: 895)
+  Rendered carts/_cart.html.erb (Duration: 7.1ms | Allocations: 2313)
+  Rendered line_items/create.js.erb (Duration: 8.4ms | Allocations: 2712)
+Completed 200 OK in 171ms (Views: 12.1ms | ActiveRecord: 141.5ms | Allocations: 11129)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:06 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es" for 127.0.0.1 at 2021-01-11 11:50:06 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 3408)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 15], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.4ms | Allocations: 896)
+  Rendered carts/_cart.html.erb (Duration: 7.7ms | Allocations: 2116)
+Completed 200 OK in 36ms (Views: 32.2ms | ActiveRecord: 1.2ms | Allocations: 11576)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:50:06 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:06 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:07 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es/orders/new" for 127.0.0.1 at 2021-01-11 11:50:07 +0600
+Processing by OrdersController#new as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:97:in `ensure_cart_isnt_empty'
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/_form.html.erb (Duration: 3.8ms | Allocations: 741)
+  Rendered orders/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 827)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE LineItem Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 15], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/views/carts/_cart.html.erb:3
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/line_items/_line_item.html.erb:7
+  Rendered collection of line_items/_line_item.html.erb [1 times] (Duration: 3.2ms | Allocations: 896)
+  Rendered carts/_cart.html.erb (Duration: 7.9ms | Allocations: 2113)
+Completed 200 OK in 36ms (Views: 27.7ms | ActiveRecord: 1.1ms | Allocations: 9712)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:50:08 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:08 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:40 +0600
+ProductsChannel stopped streaming from products
+Started POST "/orders" for 127.0.0.1 at 2021-01-11 11:50:40 +0600
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"K6Qgevlwin19+L+4LIylv4rs+kO0jArf64DsESjjZtHz5SUazLkv9cGVQx8xjCS0e33dNJhHeUNRsVJvRYLw0A==", "order"=>{"name"=>"Suarez", "address"=>"Villareal,Spain", "email"=>"suarez@gmail.com", "pay_type"=>"Check"}, "commit"=>"Realizar Pedido"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/models/order.rb:20:in `add_line_items_from_cart'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mOrder Create (0.8ms)[0m  [1m[32mINSERT INTO "orders" ("name", "address", "email", "pay_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Suarez"], ["address", "Villareal,Spain"], ["email", "suarez@gmail.com"], ["pay_type", 0], ["created_at", "2021-01-11 05:50:40.264321"], ["updated_at", "2021-01-11 05:50:40.264321"]]
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mLineItem Update (0.3ms)[0m  [1m[33mUPDATE "line_items" SET "cart_id" = ?, "order_id" = ?, "updated_at" = ? WHERE "line_items"."id" = ?[0m  [["cart_id", nil], ["order_id", 4], ["updated_at", "2021-01-11 05:50:40.273761"], ["id", 4]]
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[35m (163.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:43:in `block in create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[36mLineItem Load (0.3ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 15]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[36mCart Destroy (0.4ms)[0m  [1m[31mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+  [1m[35m (79.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:44:in `block in create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 5fd50142-00eb-4880-9bf8-4bfe7313dac7) to Async(mailers) with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f4f24647600 @uri=#<URI::GID gid://depot/Order/4>>]}
+Redirected to http://localhost:3000/es
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Completed 302 Found in 294ms (ActiveRecord: 245.9ms | Allocations: 14876)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7] Performing ActionMailer::MailDeliveryJob (Job ID: 5fd50142-00eb-4880-9bf8-4bfe7313dac7) from Async(mailers) enqueued at 2021-01-11T05:50:40Z with arguments: "OrderMailer", "received", "deliver_now", {:args=>[#<GlobalID:0x00007f4f244d9890 @uri=#<URI::GID gid://depot/Order/4>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   Rendering order_mailer/received.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   Rendered order_mailer/received.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   Rendering order_mailer/received.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   [1m[36mLineItem Load (0.5ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."order_id" = ?[0m  [["order_id", 4]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   ↳ app/views/order_mailer/received.text.erb:7
+Started GET "/es" for 127.0.0.1 at 2021-01-11 11:50:40 +0600
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   ↳ app/views/line_items/_line_item.text.erb:3
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   Rendered collection of line_items/_line_item.text.erb [1 times] (Duration: 3.6ms | Allocations: 853)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7]   Rendered order_mailer/received.text.erb within layouts/mailer (Duration: 11.2ms | Allocations: 2695)
+Processing by StoreController#index as HTML
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7] OrderMailer#received: processed outbound mail in 21.0ms
+  Parameters: {"locale"=>"es"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7] Delivered mail 5ffbe7308e7d4_1855cbd4278c1@nascenia-HP-ProBook-4540s.mail (16.1ms)
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7] Date: Mon, 11 Jan 2021 11:50:40 +0600
+From: Sam Ruby <depot@example.com>
+To: suarez@gmail.com
+Message-ID: <5ffbe7308e7d4_1855cbd4278c1@nascenia-HP-ProBook-4540s.mail>
+Subject: Pragmatic Store Order Confirmation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5ffbe7308c9e5_1855cbd4277f3";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ffbe7308c9e5_1855cbd4277f3
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Suarez
+
+Thank you for your recent order from The Pragmatic Store.
+
+You ordered the following items:
+
+ 1 x Rails, Angular, Postgres, and Bootstrap
+
+We'll send you a separate e-mail when your order ships.
+
+----==_mimepart_5ffbe7308c9e5_1855cbd4277f3
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Order#received</h1>
+
+<p>
+  , find me in app/views/order_mailer/received.html.erb
+</p>
+
+  </body>
+</html>
+
+----==_mimepart_5ffbe7308c9e5_1855cbd4277f3--
+
+  [1m[36mCart Create (0.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2021-01-11 05:50:40.592780"], ["updated_at", "2021-01-11 05:50:40.592780"]]
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [5fd50142-00eb-4880-9bf8-4bfe7313dac7] Performed ActionMailer::MailDeliveryJob (Job ID: 5fd50142-00eb-4880-9bf8-4bfe7313dac7) from Async(mailers) in 44.78ms
+  [1m[35m (72.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/current_cart.rb:8:in `rescue in set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 25.2ms | Allocations: 3746)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:22
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 4.6ms | Allocations: 1155)
+Completed 200 OK in 155ms (Views: 50.9ms | ActiveRecord: 73.7ms | Allocations: 15490)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 11:50:40 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 11:50:40 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:34 +0600
+ProductsChannel stopped streaming from products
+Started GET "/es" for 127.0.0.1 at 2021-01-11 12:11:34 +0600
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 29.1ms | Allocations: 3705)
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 1.1ms | Allocations: 16627)
+
+
+  
+ActionView::Template::Error (The asset "application.js" is not present in the asset pipeline.
+):
+     8: 
+     9:   <%= stylesheet_link_tag    'application', media: 'all',
+    10:                              'data-turbolinks-track': 'reload' %>
+    11:   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    12: </head>
+    13: 
+    14: <body class="<%= controller.controller_name %>">
+  
+app/views/layouts/application.html.erb:11
+Started GET "/es" for 127.0.0.1 at 2021-01-11 12:11:45 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 3711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.4ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 7.1ms | Allocations: 1347)
+Completed 200 OK in 61ms (Views: 54.3ms | ActiveRecord: 1.3ms | Allocations: 12893)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:11:45 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:45 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:51 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:11:51 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"TNFignf3RMIxJ8324IPxGd1d8c6bKHaE2oXCON955d6UkGfiQj7hSo1KMVH9g3ASLMzWubfjBRhgtHxGshhz3w==", "set_locale"=>"en"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 3391)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 2.6ms | Allocations: 1155)
+Completed 200 OK in 41ms (Views: 35.6ms | ActiveRecord: 0.8ms | Allocations: 10829)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:11:51 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:51 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:52 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:11:52 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"BdZ6V/5iA6LZLqOEaxEyFsm8j/lmp5fM4XXzwCcVH63dl383y6umKmVDXyN2EbMdOC2ojkps5FBbRE2+SnSJrA==", "set_locale"=>"es", "commit"=>"submit"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 3398)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 2.5ms | Allocations: 1155)
+Completed 200 OK in 34ms (Views: 30.0ms | ActiveRecord: 0.8ms | Allocations: 10822)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:11:52 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:52 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:55 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:11:55 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"yUKBdhv1sgtWn5BejUi8mBl914K9bkop/ak5KU28bocRA4QWLjwXg+rybPmQSD2T6Ozw9ZGlObVHmIdXIN34hg==", "set_locale"=>"es", "commit"=>"submit"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 3389)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 3.1ms | Allocations: 1155)
+Completed 200 OK in 30ms (Views: 25.3ms | ActiveRecord: 1.0ms | Allocations: 10811)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:11:55 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:11:55 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:26 +0600
+ProductsChannel stopped streaming from products
+Started GET "/" for 127.0.0.1 at 2021-01-11 12:13:26 +0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by StoreController#index as HTML
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 6688)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 3.7ms | Allocations: 1390)
+Completed 200 OK in 306ms (Views: 289.1ms | ActiveRecord: 3.2ms | Allocations: 38189)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:13:26 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:26 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:30 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:13:30 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"YEMtLDnGmzRbYcdZHPqJ6LDt6GMktLT+YQuwbWRRYhG4AihMDA8+vOcMO/4B+gjjQXzPFAh/x2LbOg4TCTD0EA==", "set_locale"=>"en"}
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+Redirected to http://localhost:3000/en
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms | Allocations: 893)
+
+
+Started GET "/en" for 127.0.0.1 at 2021-01-11 12:13:30 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 3378)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 3.4ms | Allocations: 1162)
+Completed 200 OK in 33ms (Views: 29.4ms | ActiveRecord: 1.0ms | Allocations: 11451)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:13:30 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:30 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:32 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:13:33 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"LEd8q8z/QFzMa5UGGxtBpzhDD1D2v8b/ORHQ/CkwfMv0BnnL+Tbl1HAGaaEGG8CsydIoJ9p0tWODIG6CRFHqyg==", "set_locale"=>"es"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+Redirected to http://localhost:3000/es
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 888)
+
+
+Started GET "/es" for 127.0.0.1 at 2021-01-11 12:13:33 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"es"}
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 3404)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.2ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 5.0ms | Allocations: 1270)
+Completed 200 OK in 30ms (Views: 26.9ms | ActiveRecord: 0.8ms | Allocations: 10978)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:13:33 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:33 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:34 +0600
+ProductsChannel stopped streaming from products
+Started POST "/" for 127.0.0.1 at 2021-01-11 12:13:34 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"authenticity_token"=>"cobz7DEMQQOF6VAGTOZK6wXGh7WwEhCsD3y/KHiTc46qx/aMBMXkizmErKFR5svg9FegwpzZYzC1TQFWFfLljw==", "set_locale"=>"en"}
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+Redirected to http://localhost:3000/en
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms | Allocations: 880)
+
+
+Started GET "/en" for 127.0.0.1 at 2021-01-11 12:13:34 +0600
+Processing by StoreController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/current_cart.rb:6:in `set_cart'
+  Rendering store/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+  ↳ app/views/store/index.html.erb:6
+  Rendered store/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mLineItem Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "line_items" WHERE "line_items"."cart_id" = ? LIMIT ?[0m  [["cart_id", 16], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  [1m[36mLineItem Load (0.1ms)[0m  [1m[34mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 16]]
+  ↳ app/views/carts/_cart.html.erb:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered carts/_cart.html.erb (Duration: 2.8ms | Allocations: 1143)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.6ms | Allocations: 10780)
+
+
+Started GET "/cable" for 127.0.0.1 at 2021-01-11 12:13:35 +0600
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2021-01-11 12:13:35 +0600
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+ProductsChannel is transmitting the subscription confirmation
+ProductsChannel is streaming from products
